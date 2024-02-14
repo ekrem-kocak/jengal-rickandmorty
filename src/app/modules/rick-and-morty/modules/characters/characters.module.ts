@@ -4,16 +4,15 @@ import { CommonModule } from '@angular/common';
 import { CharactersRoutingModule } from './characters-routing.module';
 import { CharecterCardComponent } from './components/charecter-card/charecter-card.component';
 import { CharecterCardsComponent } from './components/charecter-cards/charecter-cards.component';
-
+import { NgxsModule } from '@ngxs/store';
+import { CharecterState } from './states/charecter.state';
 
 @NgModule({
-  declarations: [
-    CharecterCardComponent,
-    CharecterCardsComponent
-  ],
+  declarations: [CharecterCardComponent, CharecterCardsComponent],
   imports: [
+    NgxsModule.forFeature([CharecterState]),
     CommonModule,
-    CharactersRoutingModule
-  ]
+    CharactersRoutingModule,
+  ],
 })
-export class CharactersModule { }
+export class CharactersModule {}
