@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CharactersRoutingModule } from './characters-routing.module';
-import { CharecterCardComponent } from './components/charecter-card/charecter-card.component';
-import { CharecterCardsComponent } from './components/charecter-cards/charecter-cards.component';
 import { NgxsModule } from '@ngxs/store';
-import { CharecterState } from './states/charecter.state';
-import { CharecterDetailsComponent } from './components/charecter-details/charecter-details.component';
+import { CharacterState } from './states/character.state';
+import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { CharacterCardsComponent } from './components/character-cards/character-cards.component';
 
 @NgModule({
   declarations: [
-    CharecterCardComponent,
-    CharecterCardsComponent,
-    CharecterDetailsComponent,
+    CharacterCardComponent,
+    CharacterCardsComponent,
+    CharacterDetailsComponent,
   ],
   imports: [
-    NgxsModule.forFeature([CharecterState]),
+    NgxsModule.forFeature([CharacterState]),
     CommonModule,
     CharactersRoutingModule,
   ],

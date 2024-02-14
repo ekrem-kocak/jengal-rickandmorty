@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Charecter } from '../../models/charecter';
+import { Character } from '../../models/character';
 
 @Component({
-  selector: 'app-charecter-card',
+  selector: 'app-character-card',
   template: `
-    <div *ngIf="charecter as c" class="card h-100">
+    <div *ngIf="character as c" class="card h-100">
       <img [src]="c.image" class="card-img-top" alt="..." />
       <div class="card-body d-flex flex-column">
         <h3 class="card-title flex-grow-1" [innerText]="c.name"></h3>
@@ -23,8 +23,8 @@ import { Charecter } from '../../models/charecter';
       </div>
     </div>
   `,
-  styleUrls: ['./charecter-card.component.scss'],
+  styleUrls: ['./character-card.component.scss'],
 })
-export class CharecterCardComponent {
-  @Input() charecter: Charecter.Model | undefined;
+export class CharacterCardComponent {
+  @Input() character: Character.Model | undefined;
 }

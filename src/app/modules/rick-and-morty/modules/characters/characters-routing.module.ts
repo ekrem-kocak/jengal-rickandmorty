@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharecterCardsComponent } from './components/charecter-cards/charecter-cards.component';
-import { charectersResolver } from './resolvers/charecters.resolver';
-import { CharecterDetailsComponent } from './components/charecter-details/charecter-details.component';
-import { charecterDetailsResolver } from './resolvers/charecter-details.resolver';
+import { charactersResolver } from './resolvers/characters.resolver';
+import { characterDetailsResolver } from './resolvers/character-details.resolver';
+import { CharacterCardsComponent } from './components/character-cards/character-cards.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 const routes: Routes = [
   {
@@ -13,13 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'character',
-    component: CharecterCardsComponent,
-    resolve: { charecters: charectersResolver },
+    component: CharacterCardsComponent,
+    resolve: { charecters: charactersResolver },
   },
   {
     path: 'charecter/:id',
-    component: CharecterDetailsComponent,
-    resolve: { selectedCharecter: charecterDetailsResolver },
+    component: CharacterDetailsComponent,
+    resolve: { selectedCharecter: characterDetailsResolver },
   },
 ];
 

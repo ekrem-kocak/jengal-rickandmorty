@@ -1,9 +1,9 @@
-export class GetCharecters {
+export class GetCharacters {
   static readonly type = '[Charecter] Get Charecters';
   constructor() {}
 }
 
-export class GetCharecterById {
+export class GetCharacterById {
   static readonly type = '[Charecter] Get Charecter By Id';
   constructor(public id: string) {}
 }

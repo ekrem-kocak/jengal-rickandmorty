@@ -1,4 +1,4 @@
-export namespace Charecter {
+export namespace Character {
   export interface Response {
     info: Info;
     results: Model[];
