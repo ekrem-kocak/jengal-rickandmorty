@@ -6,9 +6,14 @@ import { CharecterCardComponent } from './components/charecter-card/charecter-ca
 import { CharecterCardsComponent } from './components/charecter-cards/charecter-cards.component';
 import { NgxsModule } from '@ngxs/store';
 import { CharecterState } from './states/charecter.state';
+import { CharecterDetailsComponent } from './components/charecter-details/charecter-details.component';
 
 @NgModule({
-  declarations: [CharecterCardComponent, CharecterCardsComponent],
+  declarations: [
+    CharecterCardComponent,
+    CharecterCardsComponent,
+    CharecterDetailsComponent,
+  ],
   imports: [
     NgxsModule.forFeature([CharecterState]),
     CommonModule,

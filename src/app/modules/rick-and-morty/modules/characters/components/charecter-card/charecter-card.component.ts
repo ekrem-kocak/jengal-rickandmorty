@@ -13,7 +13,10 @@ import { Charecter } from '../../models/charecter';
           <li>Species: <span [innerText]="c.species"></span></li>
           <li>Gender: <span [innerText]="c.gender"></span></li>
         </ul>
-        <button href="#" class="btn btn-primary w-100 d-flex justify-content-center align-items-center">
+        <button
+          [routerLink]="['/charecter', c.id]"
+          class="btn btn-primary w-100 d-flex justify-content-center align-items-center"
+        >
           <span class="fw-bold">Details</span>
           <i class="pi pi-arrow-right ms-3"></i>
         </button>

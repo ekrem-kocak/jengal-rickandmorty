@@ -6,6 +6,7 @@ export namespace Charecter {
 
   export interface State {
     charecters: Model[];
+    selectedCharacter: Model | null;
   }
 
   export interface Info {

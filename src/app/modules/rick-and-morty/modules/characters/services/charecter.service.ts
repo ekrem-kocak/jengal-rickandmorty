@@ -15,4 +15,8 @@ export class CharecterService {
   get(): Observable<Charecter.Response> {
     return this.http.get<Charecter.Response>(this.baseUrl + 'character');
   }
+
+  getById(id: string): Observable<Charecter.Model> {
+    return this.http.get<Charecter.Model>(this.baseUrl + `character/${id}`);
+  }
 }
