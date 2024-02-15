@@ -8,11 +8,11 @@ import { CharacterDetailsComponent } from './components/character-details/charac
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'character',
+    redirectTo: 'characters',
     pathMatch: 'full',
   },
   {
-    path: 'character',
+    path: 'characters',
     component: CharacterCardsComponent,
     resolve: { charecters: charactersResolver },
   },

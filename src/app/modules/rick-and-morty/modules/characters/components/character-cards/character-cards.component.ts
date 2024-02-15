@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Character } from '../../models/character';
 import { CharacterState } from '../../states/character.state';
+import { GetCharactersWithPage } from '../../actions/character.action';
 
 @Component({
   selector: 'app-character-cards',
@@ -20,16 +21,10 @@ import { CharacterState } from '../../states/character.state';
         >
           <app-character-card [character]="c"></app-character-card>
         </div>
+
+        <app-pagination></app-pagination>
       </div>
     </div>
-
-    <!-- ALTERNATIVE -->
-
-    <!-- <div class="row">
-      <div *ngFor="let item of charecters$ | async" class="col-3">
-        <app-charecter-card></app-charecter-card>
-      </div>
-    </div> -->
   `,
   styleUrls: ['./character-cards.component.scss'],
 })

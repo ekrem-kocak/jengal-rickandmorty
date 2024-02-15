@@ -12,8 +12,10 @@ export class CharacterService {
     @Inject('BASE_API_URL') private baseUrl: string
   ) {}
 
-  get(): Observable<Character.Response> {
-    return this.http.get<Character.Response>(this.baseUrl + 'character');
+  get(page?: number): Observable<Character.Response> {
+    return this.http.get<Character.Response>(
+      this.baseUrl + (page ? `character?page=${page}` : 'character')
+    );
   }
 
   getById(id: string): Observable<Character.Model> {

@@ -7,6 +7,12 @@ export namespace Character {
   export interface State {
     charecters: Model[];
     selectedCharacter: Model | null;
+    page: Page;
+  }
+
+  export interface Page {
+    currentPage: number;
+    totalPage: number;
   }
 
   export interface Info {

@@ -7,12 +7,14 @@ import { CharacterState } from './states/character.state';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterCardsComponent } from './components/character-cards/character-cards.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     CharacterCardComponent,
     CharacterCardsComponent,
     CharacterDetailsComponent,
+    PaginationComponent,
   ],
   imports: [
     NgxsModule.forFeature([CharacterState]),
