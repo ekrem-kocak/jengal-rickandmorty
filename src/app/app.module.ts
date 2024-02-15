@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { LoadingState } from './shared/states/loading.state';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { LoadingState } from './shared/states/loading.state';
       useValue: environment.apiUrl,
     },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

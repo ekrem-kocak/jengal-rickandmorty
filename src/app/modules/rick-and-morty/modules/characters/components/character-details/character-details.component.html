@@ -1,1 +1,74 @@
-<p>charecter-details works!</p>
+<div
+  *ngIf="{
+    character: selectedCharacter$ | async
+  } as data"
+  class="py-2"
+>
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="d-flex flex-lg-row flex-column">
+        <button
+          routerLink=".."
+          class="btn btn-primary back-button me-lg-2 mb-lg-0 mb-2"
+        >
+          <i class="pi pi-arrow-circle-left"></i>
+        </button>
+        <img
+          [src]="data.character?.image"
+          class="img-fluid w-100 rounded shadow-lg"
+          [alt]="data.character?.image"
+        />
+      </div>
+    </div>
+    <div class="col-lg-7 mt-md-0 mt-2">
+      <h2 [innerText]="data.character?.name"></h2>
+      <ul>
+        <li>
+          <span>Status</span>
+          : <span class="fw-semibold">{{ data.character?.status }}</span>
+          <span
+            class="status fw-semibold ms-2"
+            [ngClass]="{
+              'bg-danger': data.character?.status === 'Dead',
+              'bg-secondary': data.character?.status === 'unknown',
+              'bg-success': data.character?.status === 'Alive'
+            }"
+          ></span>
+        </li>
+        <li>
+          <span>Species</span>
+          : <span class="fw-semibold">{{ data.character?.species }}</span>
+        </li>
+        <li *ngIf="data.character?.type">
+          <span>Type</span>
+          : <span class="fw-semibold">{{ data.character?.type }}</span>
+        </li>
+        <li *ngIf="data.character?.type">
+          <span>Gender</span>
+          : <span class="fw-semibold">{{ data.character?.gender }}</span>
+        </li>
+        <li *ngIf="data.character?.type">
+          <span>Created</span>
+          :
+          <span class="fw-semibold">{{
+            data.character?.created | date : "short"
+          }}</span>
+        </li>
+        <li *ngIf="data.character?.location?.name">
+          <span>Last known location</span>
+          :
+          <span class="fw-semibold">{{ data.character?.location?.name }}</span>
+        </li>
+      </ul>
+
+      <div>
+        <h4>Episodes</h4>
+        <ul>
+          <li *ngFor="let e of data.character?.episode">
+            <a target="_blank" [href]="e" [innerText]="e"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

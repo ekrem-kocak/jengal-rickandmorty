@@ -102,12 +102,12 @@ export class CharacterState {
     ctx: StateContext<Character.State>,
     { model, page }: FilterCharacters
   ) {
-    ctx.patchState({
-      filterModel: model,
-    });
-
     return this.characterService.get(model, page).pipe(
       tap((res) => {
+        ctx.patchState({
+          filterModel: model,
+        });
+
         ctx.patchState({
           filteredCharacters: res.results,
           page: {
