@@ -10,6 +10,8 @@ export namespace Character {
     page: Page;
     filterModel: FilterModel;
     filteredCharacters: Model[] | null;
+    genders: string[];
+    status: string[];
   }
 
   export interface Page {

@@ -6,6 +6,7 @@ import { Character } from '../models/character';
 import { CharacterService } from '../services/character.service';
 import {
   FilterCharacters,
+  GetAllGendersAndStatus,
   GetCharacterById,
   GetCharacters,
   GetCharactersWithPage,
@@ -40,30 +41,36 @@ export class CharacterState {
   }
 
   @Selector()
-  static getGenders({ charecters }: Character.State) {
-    return [...new Set(charecters.map((c) => c.gender))];
+  static getGenders({ genders }: Character.State) {
+    return genders;
   }
 
   @Selector()
-  static getStatus({ charecters }: Character.State) {
-    return [...new Set(charecters.map((c) => c.status))];
+  static getStatus({ status }: Character.State) {
+    return status;
+  }
+
+  @Selector()
+  static getFilter({ filterModel }: Character.State) {
+    return filterModel;
   }
 
   @Action(GetCharacters)
   getCharecters({ patchState, getState }: StateContext<Character.State>) {
-    const page = getState().page.currentPage;
-    return this.characterService.get(page).pipe(
-      tap((res) => {
-        console.log(res);
-        patchState({
-          charecters: res.results,
-          page: {
-            currentPage: 1,
-            totalPage: res.info.pages,
-          },
-        });
-      })
-    );
+    const state = getState();
+    return this.characterService
+      .get(state.filterModel, state.page.currentPage)
+      .pipe(
+        tap((res) => {
+          patchState({
+            charecters: res.results,
+            page: {
+              currentPage: state.page.currentPage,
+              totalPage: res.info.pages,
+            },
+          });
+        })
+      );
   }
 
   @Action(GetCharactersWithPage)
@@ -98,9 +105,8 @@ export class CharacterState {
     ctx.patchState({
       filterModel: model,
     });
-    console.error(model);
 
-    return this.characterService.getByFilter(model, page).pipe(
+    return this.characterService.get(model, page).pipe(
       tap((res) => {
         ctx.patchState({
           filteredCharacters: res.results,
@@ -115,6 +121,18 @@ export class CharacterState {
                     .join('') - 1,
             totalPage: res.info.pages,
           },
+        });
+      })
+    );
+  }
+
+  @Action(GetAllGendersAndStatus)
+  getAllGendersAndStatus({ patchState }: StateContext<Character.State>) {
+    return this.characterService.getAll().pipe(
+      tap((res) => {
+        patchState({
+          genders: [...new Set(res.results.map((c) => c.gender))],
+          status: [...new Set(res.results.map((c) => c.status))],
         });
       })
     );

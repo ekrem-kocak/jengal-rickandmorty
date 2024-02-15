@@ -14,4 +14,6 @@ export const CHARACTER_DEFAULT: Character.State = {
     type: '',
   },
   filteredCharacters: null,
+  genders: [],
+  status: [],
 };

@@ -19,3 +19,8 @@ export class FilterCharacters {
   static readonly type = '[Character] Filter Characters';
   constructor(public model: Character.FilterModel, public page: number = 1) {}
 }
+
+export class GetAllGendersAndStatus {
+  static readonly type = '[Character] Get All Genders And Status';
+  constructor() {}
+}

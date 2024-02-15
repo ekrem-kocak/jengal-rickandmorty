@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { CharacterState } from '../../states/character.state';
-import { Observable } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 import { FilterCharacters } from '../../actions/character.action';
 
 @Component({
@@ -14,14 +14,18 @@ export class FilterAndSearchComponent {
   @Select(CharacterState.getGenders) genders$: Observable<string[]> | undefined;
   @Select(CharacterState.getStatus) status$: Observable<string[]> | undefined;
 
-  constructor(private store: Store) {}
+  filterForm: FormGroup;
 
-  filterForm: FormGroup = new FormGroup({
-    searchText: new FormControl(''),
-    type: new FormControl(''),
-    status: new FormControl(''),
-    gender: new FormControl(''),
-  });
+  constructor(private store: Store) {
+    const filters = this.store.selectSnapshot(CharacterState.getFilter);
+
+    this.filterForm = new FormGroup({
+      searchText: new FormControl(filters.searchText),
+      type: new FormControl(filters.type),
+      status: new FormControl(filters.status),
+      gender: new FormControl(filters.gender),
+    });
+  }
 
   submit() {
     this.store.dispatch(new FilterCharacters(this.filterForm.value));
