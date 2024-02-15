@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   template: `
     <div class="container-fluid">
       <div class="row">
-        <div class="col-2">
+        <div class="col-xl-2">
           <app-sidebar></app-sidebar>
         </div>
-        <div class="col-10">
+        <div class="col-xl-10">
           <router-outlet></router-outlet>
         </div>
       </div>

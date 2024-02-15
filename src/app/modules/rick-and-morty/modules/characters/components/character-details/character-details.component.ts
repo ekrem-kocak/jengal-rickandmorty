@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Character } from '../../models/character';
 import { CharacterState } from '../../states/character.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-charecter-details',
@@ -10,6 +11,6 @@ import { CharacterState } from '../../states/character.state';
 })
 export class CharacterDetailsComponent {
   @Select(CharacterState.getSelectedCharacter) selectedCharacter$:
-    | Character.Model
+    | Observable<Character.Model>
     | undefined;
 }

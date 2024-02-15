@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PrimengModule } from './primeng.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, PrimengModule],
-  exports: [PrimengModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  exports: [FormsModule, ReactiveFormsModule, HttpClientModule],
 })
 export class SharedModule {}

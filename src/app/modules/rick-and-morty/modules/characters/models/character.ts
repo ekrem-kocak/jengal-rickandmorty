@@ -8,6 +8,8 @@ export namespace Character {
     charecters: Model[];
     selectedCharacter: Model | null;
     page: Page;
+    filterModel: FilterModel;
+    filteredCharacters: Model[] | null;
   }
 
   export interface Page {
@@ -45,5 +47,12 @@ export namespace Character {
   export interface Origin {
     name: string;
     url: string;
+  }
+
+  export interface FilterModel {
+    searchText: string;
+    type: string;
+    status: string;
+    gender: string;
   }
 }

@@ -1,0 +1,51 @@
+<form
+  [formGroup]="filterForm"
+  (ngSubmit)="submit()"
+  class="row flex-lg-row flex-column g-3 align-items-center bg-secondary-subtle py-3 rounded"
+>
+  <div class="col-lg-auto mb-lg-0 mb-2">
+    <h6 class="fw-semibold m-0">Filter Characters</h6>
+  </div>
+  <div class="col-lg-auto mb-lg-0 mb-2 flex-grow-1">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Name"
+      formControlName="searchText"
+    />
+  </div>
+  <div class="col-lg-auto mb-lg-0 mb-2 flex-grow-1">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Type"
+      formControlName="type"
+    />
+  </div>
+  <div class="col-lg-auto mb-lg-0 mb-2">
+    <select class="form-select" formControlName="status">
+      <option selected value="">Status</option>
+      <option *ngFor="let s of status$ | async" [value]="s">
+        {{ s }}
+      </option>
+    </select>
+  </div>
+  <div class="col-lg-auto mb-lg-0 mb-2">
+    <select class="form-select" formControlName="gender">
+      <option selected value="">Gender</option>
+      <option *ngFor="let gender of genders$ | async" [value]="gender">
+        {{ gender }}
+      </option>
+    </select>
+  </div>
+  <div class="col-lg-auto mb-lg-0 mb-2">
+    <button type="submit" class="btn btn-primary me-2">
+      <i class="pi pi-search me-xxl-2"></i>
+      <span class="d-xxl-inline-block d-none">Search</span>
+    </button>
+
+    <button class="btn btn-danger" type="button" (click)="resetFilter()">
+      <i class="pi pi-trash"></i>
+    </button>
+  </div>
+</form>

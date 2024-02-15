@@ -31,12 +31,18 @@ import { CharacterState } from '../../states/character.state';
         <li class="page-item active">
           <a class="page-link" [innerText]="data.currentPage"></a>
         </li>
-        <li class="page-item" (click)="changePage(data.currentPage! + 1)">
+        <li
+          *ngIf="data.currentPage! + 1 <= data.totalPage!"
+          class="page-item"
+          (click)="changePage(data.currentPage! + 1)"
+        >
           <a class="page-link" [innerText]="data.currentPage! + 1"></a>
         </li>
         <li
           class="page-item"
-          *ngIf="data.currentPage === 1"
+          *ngIf="
+            data.currentPage === 1 && data.currentPage! + 2 < data.totalPage!
+          "
           (click)="changePage(data.currentPage! + 2)"
         >
           <a class="page-link" [innerText]="data.currentPage! + 2"></a>

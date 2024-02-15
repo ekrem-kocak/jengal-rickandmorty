@@ -8,6 +8,8 @@ import { CharacterCardComponent } from './components/character-card/character-ca
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterCardsComponent } from './components/character-cards/character-cards.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { FilterAndSearchComponent } from './components/filter-and-search/filter-and-search.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,13 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     CharacterCardsComponent,
     CharacterDetailsComponent,
     PaginationComponent,
+    FilterAndSearchComponent,
   ],
   imports: [
     NgxsModule.forFeature([CharacterState]),
     CommonModule,
     CharactersRoutingModule,
+    SharedModule,
   ],
 })
 export class CharactersModule {}

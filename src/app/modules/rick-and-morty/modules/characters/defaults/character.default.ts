@@ -7,4 +7,11 @@ export const CHARACTER_DEFAULT: Character.State = {
     currentPage: 1,
     totalPage: 1,
   },
+  filterModel: {
+    gender: '',
+    searchText: '',
+    status: '',
+    type: '',
+  },
+  filteredCharacters: null,
 };
