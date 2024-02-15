@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Character } from '../../models/character';
 import { CharacterState } from '../../states/character.state';
-import { GetCharactersWithPage } from '../../actions/character.action';
 
 @Component({
   selector: 'app-character-cards',
